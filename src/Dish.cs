@@ -9,8 +9,8 @@ namespace Ucu.Poo.Restaurant
             get { return name; } set { name = value; }
         }
 
-        private string price;
-        public string Price
+        private double price;
+        public double Price
         {
             get { return price; } set { price = value; }
         }
@@ -21,7 +21,7 @@ namespace Ucu.Poo.Restaurant
             get { return IsVegetarian; } set { isVegetarian = value; }
         }
 
-        public Dish(string name, string price, bool isVegetarian)
+        public Dish(string name, double price, bool isVegetarian)
         {
             this.Name = name;
             this.Price = price;

@@ -5,14 +5,14 @@ namespace Ucu.Poo.Restaurant
 
     public class Table
     {
-        private int id;
-        public int Id
+        private int number;
+        public int Number
         {
-            get { return id; } set { id = value; }
+            get { return number; } set { number = value; }
         }
 
         private bool isOccupied;
-        private bool IsOccupied
+        public bool IsOccupied
         {
             get { return isOccupied; } set { isOccupied = value; }
         }
@@ -23,9 +23,9 @@ namespace Ucu.Poo.Restaurant
             get { return order; } set { order = value; }
         }
 
-        public Table(int id, bool isOccupied){
-            this.Id = id;
-            this.IsOccupied = isOccupied;
+        public Table(int number){
+            this.Number = number;
+            this.IsOccupied = false;
             this.Order = new List<Dish>();
         }
 
