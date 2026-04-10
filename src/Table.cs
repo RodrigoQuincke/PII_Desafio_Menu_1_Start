@@ -1,4 +1,7 @@
+using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Linq;
+using System.Numerics;
 
 namespace Ucu.Poo.Restaurant
 {
@@ -17,16 +20,16 @@ namespace Ucu.Poo.Restaurant
             get { return isOccupied; } set { isOccupied = value; }
         }
 
-        private List<Dish> order = new List<Dish>();
-        public List<Dish> Order
+        private Order order;
+        public Order Order
         {
             get { return order; } set { order = value; }
         }
 
-        public Table(int number){
+        public Table(int number, bool takeAway){
             this.Number = number;
             this.IsOccupied = false;
-            this.Order = new List<Dish>();
+            this.Order = new Order(takeAway);
         }
 
         public void Occupy()
@@ -37,18 +40,26 @@ namespace Ucu.Poo.Restaurant
         public void Free()
         {
             this.isOccupied = false;
-            this.order.Clear();
+            this.order.ClearOrder();
         }
 
         public void AddToOrder(Dish Dish)
         {
-            this.order.Add(Dish);
+            this.order.AddToOrder(Dish);
         }
 
         public bool HasOrders()
         {
-            return this.order.Count > 0;
+            if ( this.order.Dishes.Count() > 0 )
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
+
     }
 
 }
